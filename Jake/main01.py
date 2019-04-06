@@ -90,15 +90,15 @@ class DataScienceModeler:
 
     def experiment(self):
 
-        # model_classification = sklearn.tree.ExtraTreeClassifier(
-        #     class_weight=None, criterion='gini', max_depth=None,
-        #     max_features='auto', max_leaf_nodes=None,
-        #     min_impurity_decrease=0.0, min_impurity_split=None,
-        #     min_samples_leaf=1, min_samples_split=2,
-        #     min_weight_fraction_leaf=0.0, random_state=None,
-        #     splitter='random')
+        model_classification = sklearn.tree.ExtraTreeClassifier(
+            class_weight=None, criterion='gini', max_depth=None,
+            max_features='auto', max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, random_state=None,
+            splitter='random')
 
-        model_classification = xgb.XGBClassifier().fit(self.x_train, self.y_train)
+        # model_classification = xgb.XGBClassifier().fit(self.x_train, self.y_train)
         model_classification = model_classification.fit(self.x_train, self.y_train)
 
         y_pred = model_classification.predict(self.x_test)
