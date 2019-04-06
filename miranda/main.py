@@ -26,6 +26,7 @@ def kfoldCV(x, y, k):
             individual_errors.append(output == val_y[j])
 
         fold_error = individual_errors.count(False)/len(individual_errors)
+        print(fold_error)
         fold_errors.append(fold_error)
 
     return sum(fold_errors)/len(fold_errors)
@@ -51,11 +52,13 @@ train_y = np.array(train_y)
 test_x = np.array(test_x)
 test_y = np.array(test_y)
 
-k_values = np.linspace(1, 21, num=11)
+k_values = np.linspace(1, 3, num=2)
+print(k_values)
 errors = []
 
 for i in k_values:
-    errors.append(kfoldCV(train_x, train_y, i))
+    error = kfoldCV(train_x, train_y, i)
+    errors.append(error)
 
 print(errors)
 
