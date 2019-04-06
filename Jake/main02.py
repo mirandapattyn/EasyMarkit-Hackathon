@@ -34,6 +34,18 @@ class DataScienceModeler:
 
     model_classification = None
 
+    excluding_columns = ['ReminderId',  # N/A
+                         'apt_date',
+                         'gender',  # This column is verified to be INEFFECTIVE.
+                         'sent_time',  # N/A
+                         'apt_type',  # N/A
+                         'cli_zip',  # N/A
+                         'net_hour',
+                         'pat_id',
+                         # 'clinic',
+                         # 'family_id',
+                         ]
+# 66.5 67.00 67.10 67.57 67.61
     ############################################################################
     #                              Data Pre-Processing                         #
     ############################################################################
@@ -55,13 +67,10 @@ class DataScienceModeler:
         )
 
         # For these columns we don't want to use.
-        self.X = df.drop(['ReminderId', 'response',  # N/A
-                          'apt_date',
-                          'gender',  # This column is verified to be INEFFECTIVE.
-                          'sent_time',  # N/A
-                          'apt_type',  # N/A
-                          'net_hour', 'cli_zip'  # N/A
-                          ], axis=1)
+        temp = self.excluding_columns
+        temp.append('response')
+        self.X = df.drop(temp, axis=1)
+        temp.remove('response')
 
         # These fields only exist in the training data, so we have to drop it.
         self.X = self.X.drop(
@@ -136,13 +145,7 @@ class DataScienceModeler:
         Y = df.ReminderId
 
         # For these columns we don't want to use.
-        X = df.drop(['ReminderId',  # N/A
-                          'apt_date',
-                          'gender',  # This column is verified to be INEFFECTIVE.
-                          'sent_time',  # N/A
-                          'apt_type',  # N/A
-                          'net_hour', 'cli_zip'  # N/A
-                          ], axis=1)
+        X = df.drop(self.excluding_columns, axis=1)
 
         x_train, x_test, y_train, y_test = sklearn.model_selection\
             .train_test_split(X, Y, test_size=0.0, shuffle=False)
