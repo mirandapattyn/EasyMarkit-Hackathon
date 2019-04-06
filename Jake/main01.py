@@ -23,6 +23,8 @@ from sklearn.externals import joblib
 
 class DataScienceModeler:
 
+    jake_folder = "C:\\TemporaryFiles\\"
+
     X = None
     Y = None
     x_train = None
@@ -42,7 +44,7 @@ class DataScienceModeler:
     def load_trainingset(self, shuffle):
         print("<==== ====", inspect.stack()[0][3], "==== ====>")
 
-        df = pd.read_csv("C:\\TemporaryFiles\\train.csv")
+        df = pd.read_csv(self.jake_folder + "train.csv")
 
         print("Prepare the Data Sets")
 
@@ -121,7 +123,7 @@ class DataScienceModeler:
     def test(self):
         print("Predict the test set.")
 
-        df = pd.read_csv("C:\\TemporaryFiles\\test.csv")
+        df = pd.read_csv(self.jake_folder + "test.csv")
 
         print("Prepare the Data Sets")
 
@@ -149,7 +151,7 @@ class DataScienceModeler:
 
         # Make the submission file.
         submission = pd.DataFrame(y_pred, columns=['response'])
-        submission.to_csv("C:\\TemporaryFiles\\submission.csv", index=True, index_label='ReminderId')
+        submission.to_csv(self.jake_folder + "submission.csv", index=True, index_label='ReminderId')
 
         # Print out success message.
         print("COMPLETE: submission.csv created!")
