@@ -54,7 +54,7 @@ class DataScienceModeler:
                           'apt_date',
                           'sent_time',  # N/A
                           'apt_type',  # N/A
-                          'net_hour', 'clinic', 'cli_zip', 'pat_id', 'family_id'  # N/A
+                          'net_hour', 'cli_zip'  # N/A
                           ], axis=1)
 
 
@@ -74,7 +74,7 @@ class DataScienceModeler:
                           'apt_date',
                           'sent_time',  # N/A
                           'apt_type',  # N/A
-                          'net_hour', 'clinic', 'cli_zip', 'pat_id', 'family_id'  # N/A
+                          'net_hour', 'cli_zip'  # N/A
                           ], axis=1)
 
         print("5")

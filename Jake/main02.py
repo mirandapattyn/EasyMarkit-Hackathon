@@ -60,9 +60,8 @@ class DataScienceModeler:
                           'gender',  # This column is verified to be INEFFECTIVE.
                           'sent_time',  # N/A
                           'apt_type',  # N/A
-                          'net_hour', 'clinic', 'cli_zip', 'pat_id', 'family_id'  # N/A
+                          'net_hour', 'cli_zip'  # N/A
                           ], axis=1)
-
 
         # These fields only exist in the training data, so we have to drop it.
         self.X = self.X.drop(
@@ -105,7 +104,7 @@ class DataScienceModeler:
     def experiment(self):
         print("Start the experiment.")
 
-        # ExtraTree: acc 67.045
+        # ExtraTree: acc 67.685152
         self.model_classification = sklearn.tree.ExtraTreeClassifier(
             class_weight=None, criterion='gini', max_depth=None,
             max_features='auto', max_leaf_nodes=None,
@@ -142,7 +141,7 @@ class DataScienceModeler:
                           'gender',  # This column is verified to be INEFFECTIVE.
                           'sent_time',  # N/A
                           'apt_type',  # N/A
-                          'net_hour', 'clinic', 'cli_zip', 'pat_id', 'family_id'  # N/A
+                          'net_hour', 'cli_zip'  # N/A
                           ], axis=1)
 
         x_train, x_test, y_train, y_test = sklearn.model_selection\
@@ -166,10 +165,5 @@ if __name__ == "__main__":
     dataScienceModeler = DataScienceModeler()
     dataScienceModeler.load_trainingset(False)
     dataScienceModeler.experiment()
-    # dataScienceModeler.test()
-
-
-
-
-
+    dataScienceModeler.test()
 
