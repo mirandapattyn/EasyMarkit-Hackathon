@@ -81,6 +81,24 @@ class DataScienceModeler:
         print(X_Training.columns)
         print(X_Testing.columns)
 
+        X_Training_Set = set()
+        for col in X_Training.columns:
+            X_Training_Set.add(col)
+
+        X_Testing_Set = set()
+        for col in X_Testing.columns:
+            X_Testing_Set.add(col)
+
+
+        print("Only in Training:")
+        print(X_Training_Set.difference(X_Testing_Set))
+
+        print("Only in Testing:")
+        print(X_Testing_Set.difference(X_Training_Set))
+
+
+
+
 
 ################################################################################
 #                                 Main                                         #
