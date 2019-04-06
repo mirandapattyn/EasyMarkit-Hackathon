@@ -78,17 +78,10 @@ class DataScienceModeler:
         f1_score = sklearn.metrics.f1_score(y_test, y_pred)
         print("F1 Performance Score: %.6f%%" % (f1_score * 100))
 
-
-    def print_classification_performance_metrics_accuracy(self, y_test, y_pred):
-        confusion_matrix = sklearn.metrics.confusion_matrix(y_test, y_pred)
-        print("Confusion Matrix:")
-        print(confusion_matrix)
-
-        tn, fp, fn, tp = sklearn.metrics.confusion_matrix(y_test, y_pred).ravel()
-        print("TN:", tn, "FP", fp, "FN", fn, "TP", tp)
-
         acc = sklearn.metrics.accuracy_score(y_test, y_pred)
         print("Accuracy Performance Score: %.6f%%" % (acc * 100))
+
+
 
 
     ############################################################################
@@ -109,7 +102,7 @@ class DataScienceModeler:
         model_classification = model_classification.fit(self.x_train, self.y_train)
 
         y_pred = model_classification.predict(self.x_test)
-        self.print_classification_performance_metrics_accuracy(self.y_test, y_pred)
+        self.print_classification_performance_metrics(self.y_test, y_pred)
 
 
 ################################################################################
